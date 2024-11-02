@@ -1,5 +1,5 @@
 // Load the logo from a URL
-const logoUrl = 'https://media.istockphoto.com/id/1408605259/vector/auto-sports-vehicle-silhouette.jpg?s=612x612&w=0&k=20&c=--lwIV-ayDVrjistgR22-B9xFic1xsAusMxxzu6Mjhw='; // Replace with your logo URL
+const logoUrl = 'https://github.com/MightyKernal/auto360invoices/blob/main/logo.jpeg'; // Replace with your logo URL
 
 document.addEventListener('DOMContentLoaded', function() {
     const invoiceDateInput = document.getElementById('invoice-date');
