@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Load libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Invoice Generator</h1>
+        <form id="invoice-form">
+            <!-- New Input Fields -->
+            <div class="invoice-details">
+                <h3>Invoice Information</h3>
+                
+                <div class="input-row">
+                    <div class="customer-row">
+                        <label for="invoice-to">Invoice To:</label>
+                        <input type="text" id="invoice-to" placeholder="Enter invoice recipient" required>
+                    </div>
+                    <div class="customer-row">
+                        <label for="client-email">Email:</label>
+                        <input type="email" id="client-email" placeholder="Enter client email" required>
+                    </div>
+                    
+                </div>
+            
+                <div class="input-row">
+                    <div class="customer-row">
+                        <label for="rego-number">Rego #:</label>
+                        <input type="text" id="rego-number" placeholder="Enter vehicle registration number" required>
+                    </div>
+                    <div class="customer-row">
+                        <label for="invoice-number">Invoice #:</label>
+                        <input type="text" id="invoice-number" placeholder="Enter invoice number" required>
+                    </div>
+                </div>
+            
+                <div class="input-row">
+                    <div class="customer-row">
+                        <label for="invoice-date">Date:</label>
+                        <input type="date" id="invoice-date" required>
+                    </div>
+                    <div class="customer-row">
+                        <label for="due-date">Due Date:</label>
+                        <input type="date" id="due-date" required>
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            <div id="items-container">
+                <h3>Items</h3>
+                <div class="item">
+                    <label for="item-description">Item:</label>
+                    <input type="text" class="item-description" placeholder="Description of the item" required>
+
+                    <label for="item-part">Part:</label>
+                    <input type="number" class="item-part" min="0" step="0.01" placeholder="0.00" required>
+
+                    <label for="item-labour">Labour:</label>
+                    <input type="number" class="item-labour" min="0" step="0.01" placeholder="0.00" required>
+
+                    <button type="button" class="remove-item">Remove</button>
+                </div>
+            </div>
+            <button type="button" id="add-item">Add Item</button>
+
+            <h3>Default Values</h3>
+
+            <div class="panel">
+                <h3>Payment Method</h3>
+                <div class="customer-row">
+                    <select id="payment-method">
+                        <option value="Card Payment (Visa/Master Card/American Express)">Card Payment (Visa/Master Card/American Express)</option>
+                        <option value="Cash Payment">Cash Payment</option>
+                        <option value="none"></option>
+                    </select>
+                </div>
+
+                <h3>Notes</h3>
+                <div class="customer-row">
+                    <input type="text" id="invoice-notes" placeholder="Enter any additional notes" style="width: calc(100% - 130px);">
+                </div>
+
+                <h3>Bank Information</h3>
+                <div class="customer-row">
+                    <label for="bank-name">Bank Name:</label>
+                    <input type="text" id="bank-name" value="National Australia Bank" placeholder="Enter bank name">
+                </div>
+                <div class="customer-row">
+                    <label for="bsb">BSB:</label>
+                    <input type="text" id="bsb" value="083-543" placeholder="Enter BSB">
+                </div>
+                <div class="customer-row">
+                    <label for="account-number">Account No:</label>
+                    <input type="text" id="account-number" value="721196445" placeholder="Enter account number">
+                </div>
+            </div>
+
+            <button type="submit">View Invoice</button>
+        </form>
+
+        <div id="invoice-output" style="display:none;">
+            <div id="invoice-content"></div>
+            <button id="download-pdf">Download as PDF</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
