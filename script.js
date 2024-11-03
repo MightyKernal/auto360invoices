@@ -177,9 +177,6 @@ document.getElementById('invoice-form').addEventListener('submit', function(even
                 // Add the invoice image to the PDF
                 pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
 
-                // Add the logo to the PDF on the left
-                pdf.addImage(logoUrl, 'JPEG', 10, 10, 30, 30); // Position logo at (10, 10) with width 30 and height 30
-
                 // Save the PDF
                 pdf.save(`Invoice_${regoNumber}.pdf`);
             }).catch(err => {
