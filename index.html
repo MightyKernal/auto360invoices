@@ -1,117 +1,829 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html dir="ltr" class="no-js" lang="zxx">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice Generator</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Load libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Auto360 Solutions</title>
+    <meta name="author" content="Angfuzsoft">
+    <meta name="description" content="Malen - Car Repair and Services HTML Template">
+    <meta name="keywords" content="Malen - Car Repair and Services HTML Template">
+    <meta name="robots" content="INDEX,FOLLOW">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicons - Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--==============================
+	  Google Fonts
+	============================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!--==============================
+	    All CSS File
+	============================== -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Fontawesome Icon -->
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+    <!-- Slick Slider -->
+    <link rel="stylesheet" href="assets/css/slick.min.css">
+    <!-- odometer -->
+    <link rel="stylesheet" href="assets/css/odometer-theme-default.css">
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
+
 <body>
-    <div class="container">
-        <h1>Invoice Generator</h1>
-        <form id="invoice-form">
-            <!-- New Input Fields -->
-            <div class="invoice-details">
-                <h3>Invoice Information</h3>
-                
-                <div class="input-row">
-                    <div class="customer-row">
-                        <label for="invoice-to">Invoice To:</label>
-                        <input type="text" id="invoice-to" placeholder="Enter invoice recipient" required>
-                    </div>
-                    <div class="customer-row">
-                        <label for="client-email">Email:</label>
-                        <input type="email" id="client-email" placeholder="Enter client email" required>
-                    </div>
-                    
+
+
+    <!--[if lte IE 9]>
+    	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+
+
+    <!--********************************
+   		Code Start From Here 
+	******************************** -->
+
+
+
+    <!--==============================
+     Preloader
+  ==============================-->
+    <div class="preloader ">
+        <button class="th-btn style2 preloaderCls">Cancel Preloader </button>
+        <div class="preloader-inner">
+            <div class="loader">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="subline"></div>
+                <div class="subline"></div>
+                <div class="subline"></div>
+                <div class="subline"></div>
+                <div class="subline"></div>
+                <div class="loader-circle-1">
+                    <div class="loader-circle-2"></div>
                 </div>
-            
-                <div class="input-row">
-                    <div class="customer-row">
-                        <label for="rego-number">Rego #:</label>
-                        <input type="text" id="rego-number" placeholder="Enter vehicle registration number" required>
-                    </div>
-                    <div class="customer-row">
-                        <label for="invoice-number">Invoice #:</label>
-                        <input type="text" id="invoice-number" placeholder="Enter invoice number" required>
-                    </div>
-                </div>
-            
-                <div class="input-row">
-                    <div class="customer-row">
-                        <label for="invoice-date">Date:</label>
-                        <input type="date" id="invoice-date" required>
-                    </div>
-                    <div class="customer-row">
-                        <label for="due-date">Due Date:</label>
-                        <input type="date" id="due-date" required>
-                    </div>
-                </div>
+                <div class="needle"></div>
+                <div class="loading">Loading</div>
             </div>
-            
-            
-
-            <div id="items-container">
-                <h3>Items</h3>
-                <div class="item">
-                    <label for="item-description">Item:</label>
-                    <input type="text" class="item-description" placeholder="Description of the item" required>
-
-                    <label for="item-part">Part:</label>
-                    <input type="number" class="item-part" min="0" step="0.01" placeholder="0.00" required>
-
-                    <label for="item-labour">Labour:</label>
-                    <input type="number" class="item-labour" min="0" step="0.01" placeholder="0.00" required>
-
-                    <button type="button" class="remove-item">Remove</button>
-                </div>
-            </div>
-            <button type="button" id="add-item">Add Item</button>
-
-            <h3>Default Values</h3>
-
-            <div class="panel">
-                <h3>Payment Method</h3>
-                <div class="customer-row">
-                    <select id="payment-method">
-                        <option value="Card Payment (Visa/Master Card/American Express)">Card Payment (Visa/Master Card/American Express)</option>
-                        <option value="Cash Payment">Cash Payment</option>
-                        <option value="none"></option>
-                    </select>
-                </div>
-
-                <h3>Notes</h3>
-                <div class="customer-row">
-                    <input type="text" id="invoice-notes" placeholder="Enter any additional notes" style="width: calc(100% - 130px);">
-                </div>
-
-                <h3>Bank Information</h3>
-                <div class="customer-row">
-                    <label for="bank-name">Bank Name:</label>
-                    <input type="text" id="bank-name" value="National Australia Bank" placeholder="Enter bank name">
-                </div>
-                <div class="customer-row">
-                    <label for="bsb">BSB:</label>
-                    <input type="text" id="bsb" value="083-543" placeholder="Enter BSB">
-                </div>
-                <div class="customer-row">
-                    <label for="account-number">Account No:</label>
-                    <input type="text" id="account-number" value="721196445" placeholder="Enter account number">
-                </div>
-            </div>
-
-            <button type="submit">View Invoice</button>
-        </form>
-
-        <div id="invoice-output" style="display:none;">
-            <div id="invoice-content"></div>
-            <button id="download-pdf">Download as PDF</button>
         </div>
     </div>
+    <!--==============================
+    Sidemenu
+============================== -->
+    
+    <!--==============================
+    Mobile Menu
+  ============================== -->
+    <!-- <div class="th-menu-wrapper">
+        <div class="th-menu-area">
+            <div class="mobile-logo">
+                <a href="index.html"><img src="assets/img/logo-white.svg" alt="Malen"></a>
+                <div class="close-menu">
+                    <button class="th-menu-toggle"><i class="fal fa-times"></i></button>
+                </div>
+            </div>
+            <div class="th-mobile-menu">
+                <ul>
+                    <li class="menu-item-has-children">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Services</a>
+                        <ul class="sub-menu">
+                            <li><a href="service.html">Services Style 1</a></li>
+                            <li><a href="service-2.html">Services Style 2</a></li>
+                            <li><a href="service-details.html">Services Details Style 1</a></li>
+                            <li><a href="service-details-2.html">Services Details Style 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Portfolio </a>
+                        <ul class="sub-menu">
+                            <li><a href="portfolio.html">Portfolio Style 1</a></li>
+                            <li><a href="portfolio-2.html">Portfolio Style 2</a></li>
+                            <li><a href="portfolio-details.html">portfolio Details Style 1</a></li>
+                            <li><a href="portfolio-details-2.html">portfolio Details Style 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children mega-menu-wrap">
+                        <a href="#">Pages</a>
+                        <ul class="mega-menu">
+                            <li><a href="shop.html">Pagelist 1</a>
+                                <ul>
+                                    <li><a href="index.html">Home One</a></li>
+                                    <li><a href="index-2.html">Home Two</a></li>
+                                    <li><a href="index-3.html">Home Three</a></li>
+                                    <li><a href="index-4.html">Home Four</a></li>
+                                    <li><a href="index-5.html">Home Five</a></li>
+                                    <li><a href="index-6.html">Home Six</a></li>
+                                    <li><a href="index-7.html">Home Seven</a></li>
+                                    <li><a href="about.html">About Style 1</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Pagelist 2</a>
+                                <ul>
+                                    <li><a href="about-2.html">About Style 2</a></li>
+                                    <li><a href="team-details.html">Team Details Style 1</a></li>
+                                    <li><a href="service.html">Services Style 1</a></li>
+                                    <li><a href="service-2.html">Services Style 2</a></li>
+                                    <li><a href="service-details.html">Services Details Style 1</a></li>
+                                    <li><a href="service-details-2.html">Services Details Style 2</a></li>
+                                    <li><a href="team.html">Team Style 1</a></li>
+                                    <li><a href="team-2.html">Team Page 2</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Pagelist 3</a>
+                                <ul>
+                                    <li><a href="shop.html">Shop Style 1</a></li>
+                                    <li><a href="shop-2.html">Shop Style 2</a></li>
+                                    <li><a href="shop-details.html">Shop Details Style 1</a></li>
+                                    <li><a href="shop-details-2.html">Shop Details Style 2</a></li>
+                                    <li><a href="cart.html">Cart Page</a></li>
+                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Pagelist 4</a>
+                                <ul>
+                                    <li><a href="team-details-2.html">Team Details Style 2</a></li>
+                                    <li><a href="appointment.html">Appointment</a></li>
+                                    <li><a href="price.html">Price</a></li>
+                                    <li><a href="faq.html">FAQ Style 1</a></li>
+                                    <li><a href="faq-2.html">FAQ Style 2</a></li>
+                                    <li><a href="contact.html">Contact Style 1</a></li>
+                                    <li><a href="contact-2.html">Contact Style 2</a></li>
+                                    <li><a href="error.html">Error Style</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
 
-    <script src="script.js"></script>
+                    <li class="menu-item-has-children">
+                        <a href="#">News</a>
+                        <ul class="sub-menu">
+                            <li><a href="blog.html">News Style 1</a></li>
+                            <li><a href="blog-2.html">News Style 2</a></li>
+                            <li><a href="blog-details.html">News Details Style 1</a></li>
+                            <li><a href="blog-details-2.html">News Details Style 2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact Us</a>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div> -->
+    <!--==============================
+	Header Area
+==============================-->
+    <header class="th-header header-layout4">
+
+        <div class="header-top-area">
+            <div class="header-top">
+                <div class="container">
+                    <div class="row justify-content-center justify-content-md-between align-items-center">
+                        <div class="col-auto">
+                            <p class="header-notice d-none d-lg-block"><strong>Welcome To Auto360 Solutions!</strong></p>
+                        </div>
+                        <div class="col-auto">
+                            <div class="header-social">
+                                <span class="social-title">Follow Us On Facebook:</span>
+                                <a href="https://www.facebook.com/profile.php?id=61562652069334" target="_blank"><i class="fab fa-facebook-f"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-top">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <div class="logo-style2" style="display: flex; align-items: center;">
+                                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                                    <img src="assets/img/logo.png" alt="Auto360" width="98px" style="margin-right: 10px;">
+                                    <div style="display: flex; flex-direction: column; line-height: 1;">
+                                        <span style="font-size: 1.5em; font-weight: bold; color: whitesmoke;">Auto360</span>
+                                        <span style="font-size: 1.5em; font-weight: bold; color: whitesmoke;">Solutions</span>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row align-items-center justify-content-center justify-content-md-end justify-content-lg-between">
+                                        <div class="col-auto d-none d-lg-block">
+                                            <div class="header-info">
+                                                <div class="header-info_icon">
+                                                    <i class="fal fa-envelope-open-text"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span class="header-info_label">Make An Email</span>
+                                                    <div class="header-info_link">
+                                                        <a href="mailto:auto360solutions@outlook.com" style="font-size: 0.85em;">auto360solutions@outlook.com</a>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto d-none d-lg-block">
+                                            <div class="header-info">
+                                                <div class="header-info_icon">
+                                                    <i class="fal fa-headset"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span class="header-info_label">Call us 24/7</span>
+                                                    <div class="header-info_link">
+                                                        <a href="#" style="font-size: 0.85em;">0452 500 491 | 0401 080 385</a>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto d-none d-xl-block">
+                                            <div class="header-info">
+                                                <div class="header-info_icon">
+                                                    <i class="fal fa-clock"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span class="header-info_label">Office Hours</span>
+                                                    <div class="header-info_link">
+                                                        <span style="font-size: 0.85em;">Mon-Sat 8am -6pm</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Menu Area -->
+        <div class="sticky-wrapper">
+            <div class="menu-area">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-auto">
+                            <nav class="main-menu menu-style1 d-none d-lg-block">
+                                <ul>
+                                    <li>
+                                        <a href="index.html">Home</a>
+                                        
+                                    </li>
+                                    <li><a href="#service-sec">Services</a></li>
+                                    <li><a href="#about-sec">About Us</a></li>
+                                    <li><a href="#contact-sec">Contact Us</a></li>
+                                </ul>
+                                <!-- 
+
+<ul>
+    <li class="menu-item-has-children">
+        <a href="#hero">Home</a>
+        <ul class="sub-menu">
+            <li class="menu-item-has-children">
+                <a href="#">Multipage</a>
+                <ul class="sub-menu">
+                    <li><a href="index.html">Home Wedding</a></li>
+                    <li><a href="index-2.html">Wedding Announcement</a></li>
+                    <li><a href="index-3.html">Wedding Planner</a></li>
+                </ul>
+            </li>
+            <li class="menu-item-has-children">
+                <a href="#">Onepage</a>
+                <ul class="sub-menu">
+                    <li><a href="index-onepage.html">Home Wedding</a></li>
+                    <li><a href="index-2-onepage.html">Wedding Announcement</a></li>
+                    <li><a href="index-3-onepage.html">Wedding Planner</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><a href="#about-sec">About Us</a></li>
+    <li><a href="#story-sec">Story</a></li>
+    <li><a href="#service-sec">Services</a></li>
+    <li><a href="#shop-sec">Shop</a></li>
+	<li><a href="#blog-sec">Blog</a></li>
+    <li><a href="#contact-sec">Contact Us</a></li>
+</ul> -->
+                            </nav>
+                        </div>
+                        <div class="col-auto">
+                            <div class="d-flex align-items-center">
+                                <a href="#map-sec" class="header-link-btn"><i class="far fa-map-marker-alt"></i>Our
+                                    Location</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--==============================
+Hero Area
+==============================-->
+    <section class="th-hero-wrapper hero-4" id="hero">
+        <div class="hero-slider-4 th-carousel number-dots" data-slide-show="1" data-md-slide-show="1" data-fade="true" data-dots="true" data-xl-dots="true" data-ml-dots="true" data-lg-dots="true">
+            <div class="th-hero-slide">
+                <div class="th-hero-bg" data-bg-src="assets/img/update_1/hero/1.png">
+                    <img src="assets/img/update_1/hero/1.png" alt="Hero Image" style="width: 100%; height: auto; position: relative; filter: brightness(0.5);">
+
+                </div>
+                <div class="container">
+                    <div class="hero-style4">
+                        <span class="hero-subtitle" data-ani="slideindown" data-ani-delay="0.2s">Professional Automobile Services</span>
+                        <h1 class="hero-title" data-ani="slideindown" data-ani-delay="0.3s">Get Your Amazing </h1>
+                        <h1 class="hero-title" data-ani="slideindown" data-ani-delay="0.4s">
+                            Car Solution</h1>
+                        <p class="hero-text" data-ani="slideindown" data-ani-delay="0.5s">Experienced Technicians Providing Reliable and Efficient Car Care Services </p>
+                        <a href="#service-sec" class="th-btn style2" data-ani="slideindown" data-ani-delay="0.6s">See Our Services</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="th-hero-slide">
+                <div class="th-hero-bg" data-bg-src="assets/img/update_1/hero/3.png">
+                    <img src="assets/img/update_1/hero/3.png" alt="Hero Image">
+                </div>
+                <div class="container">
+                    <div class="hero-style4">
+                        <span class="hero-subtitle" data-ani="slideindown" data-ani-delay="0.2s">Professional Automobile Services</span>
+                        <h1 class="hero-title" data-ani="slideindown" data-ani-delay="0.3s">Fix Any Complex </h1>
+                        <h1 class="hero-title" data-ani="slideindown" data-ani-delay="0.4s">
+                            Car Problem</h1>
+                        <p class="hero-text" data-ani="slideindown" data-ani-delay="0.5s">
+                            Contact us today for reliable car service and expert support! </p>
+                        <a href="#contact-sec" class="th-btn style2" data-ani="slideindown" data-ani-delay="0.6s">Get A
+                            Quote</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="th-hero-slide">
+                <div class="th-hero-bg" data-bg-src="assets/img/update_1/hero/2.png">
+                    <img src="assets/img/update_1/hero/2.png" alt="Hero Image">
+                </div>
+                <div class="container">
+                    <div class="hero-style4">
+                        <span class="hero-subtitle" data-ani="slideindown" data-ani-delay="0.2s">Professional Automobile Services</span>
+                        <h1 class="hero-title" data-ani="slideindown" data-ani-delay="0.3s">Fix Your Personal </h1>
+                        <h1 class="hero-title" data-ani="slideindown" data-ani-delay="0.4s">
+                            Car Problem</h1>
+                        <p class="hero-text" data-ani="slideindown" data-ani-delay="0.5s"> Exceptional Customer Service, Ensuring Your Satisfaction Every Step of the Way </p>
+                        <a href="#about-sec" class="th-btn style2" data-ani="slideindown" data-ani-delay="0.6s">Check About Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--======== / Hero Section ========-->
+    <!--==============================
+Service Area  
+==============================-->
+    <section class="space overflow-hidden" id="service-sec">
+        <div class="container">
+            <div class="title-area text-center">
+                <span class="sub-title">Our Best Service<span class="double-line"></span></span>
+                <h2 class="sec-title">Quality Servicing Opportunity</h2>
+            </div>
+            <div class="row th-carousel" data-slide-show="3" data-md-slide-show="2" data-arrows="true">
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-block">
+                        <div class="service-block_img">
+                            <img src="assets/img/logbook.png" alt="service image">
+                        </div>
+                        <div class="service-block_content" data-bg-src="assets/img/update_1/bg/pattern_bg_7.png">
+                            <span class="service-block_number">Service 01</span>
+                            <h3 class="service-block_title"><a href="#">Logbook Service</a></h3>
+                        
+                            <p class="th-btn"> Strting From $120.00 </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-block">
+                        <div class="service-block_img">
+                            <img src="assets/img/engine.png" alt="service image">
+                        </div>
+                        <div class="service-block_content" data-bg-src="assets/img/update_1/bg/pattern_bg_7.png">
+                            <span class="service-block_number">Service 02</span>
+                            <h3 class="service-block_title"><a href="#">Engine Swap</a></h3>
+                            <p class="th-btn"> Strting From $650.00 </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-block">
+                        <div class="service-block_img">
+                            <img src="assets/img/transmission.png" alt="service image">
+                        </div>
+                        <div class="service-block_content" data-bg-src="assets/img/update_1/bg/pattern_bg_7.png">
+                            <span class="service-block_number">Service 03</span>
+                            <h3 class="service-block_title"><a href="#">Transmission Swap</a></h3>
+                            <p class="th-btn"> Strting From $450.00 </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-block">
+                        <div class="service-block_img">
+                            <img src="assets/img/breck.png" alt="service image">
+                        </div>
+                        <div class="service-block_content" data-bg-src="assets/img/update_1/bg/pattern_bg_7.png">
+                            <span class="service-block_number">Service 04</span>
+                            <h3 class="service-block_title"><a href="#">Brakes Replacement</a></h3>
+                            <p class="th-btn"> Strting From $120.00 </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-block">
+                        <div class="service-block_img">
+                            <img src="assets/img/rwc.png" alt="service image">
+                        </div>
+                        <div class="service-block_content" data-bg-src="assets/img/update_1/bg/pattern_bg_7.png">
+                            <span class="service-block_number">Service 05</span>
+                            <h3 class="service-block_title"><a href="#">RWC Certification</a></h3>
+                            <p class="th-btn"> Strting From $180.00 </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--==============================
+Feature Area  
+==============================-->
+    <!--==============================
+Cta Area  
+==============================-->
+    
+    <!--==============================
+Project Area  
+==============================-->
+    
+    <!--==============================
+Team Area  
+==============================-->
+
+    <!--==============================
+Feature Area  
+==============================-->
+    <div class="bg-title2 position-relative overflow-hidden" id="about-sec">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="th-video style1">
+                    <img src="assets/img/aboutus.png" alt="Video Image">
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="feature-media-wrap space">
+                    <div class="title-area text-md-start">
+                        <span class="sub-title">About Our Company</span>
+                        <h2 class="sec-title text-white">Why Choose Us?</h2>
+                    </div>
+                    <div class="feature-media">
+                        <div class="feature-media_num">01</div>
+                        <div class="feature-media_content">
+                            <h3 class="feature-media_title">Around-the-Clock Convenience</h3>
+                            <p class="feature-media_text">Your vehicle doesn't follow a 9 to 5 schedule, and neither do we! Our car service shop is open after hours, providing convenient and reliable service whenever you need it.</p>
+                        </div>
+                    </div>
+                    <div class="feature-media">
+                        <div class="feature-media_num">02</div>
+                        <div class="feature-media_content">
+                            <h3 class="feature-media_title">Skilled Professionals</h3>
+                            <p class="feature-media_text">Our team of certified mechanics brings a wealth of knowledge and expertise to every job. With a commitment to excellence, you can trust that your vehicle is in capable hands.</p>
+                        </div>
+                    </div>
+                    <div class="feature-media">
+                        <div class="feature-media_num">03</div>
+                        <div class="feature-media_content">
+                            <h3 class="feature-media_title">Quality Time Delivery</h3>
+                            <p class="feature-media_text">We know how important your time is. That's why we strive for quick service without sacrificing quality. Count on us for efficient repairs and maintenance, so you can get back on the road with confidence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="body-shape4">
+            <img src="assets/img/update_1/shape/shape_2.png" alt="shape">
+        </div>
+    </div>
+    <!--==============================
+Product Area  
+==============================-->
+    
+    <!--==============================
+Price Area  
+==============================-->
+    
+    <!--==============================
+Process Area  
+==============================-->
+
+    <!--==============================
+Testimonial Area  
+==============================-->
+    
+    <!--==============================
+Bloge Area  
+==============================-->
+    
+    <!--==============================
+Contact Area  
+==============================-->
+    <section class="space">
+
+        <div class="space-bottom" id="contact-sec">
+            <div class="container">
+                <div class="row gy-40 flex-row-reverse">
+                    <div class="col-xl-7">
+                        <div class="contact-form-wrapper">
+                            <form id="contact-form" action="https://formspree.io/f/xjkvwnyz" method="POST" class="contact-form ajax-contact">
+                                <h2 class="form-title">Send A Message</h2>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <i class="fa-sharp fa-light fa-user"></i>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <i class="fa-sharp fa-light fa-user"></i>
+                                        <input type="text" class="form-control" name="vehicle" id="vehicle" placeholder="Vehicle Model - Year" required>
+                                    </div>
+                        
+                                    <div class="form-group col-md-6">
+                                        <i class="fa-sharp fa-regular fa-envelope"></i>
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <i class="fa-sharp fa-regular fa-phone"></i>
+                                        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Contact No:" required>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <i class="fa-regular fa-tag"></i>
+                                        <select name="subject" id="subject" class="form-select nice-select" required>
+                                            <option value="" disabled selected hidden>Select</option>
+                                            <option value="Logbook Service">Logbook Service</option>
+                                            <option value="Engine Swap">Engine or Transmission Swap</option>
+                                            <option value="Brakes Replacement">Brakes Replacement</option>
+                                            <option value="RWC Certification">RWC Certification</option>
+                                            <option value="Other">Other - Specify on message</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <i class="fal fa-comment"></i>
+                                        <textarea name="message" id="message" cols="30" rows="3" class="form-control" placeholder="Message" required></textarea>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="submit" class="th-btn">SUBMIT MESSAGE <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        
+                            <!-- Success Message -->
+                            <div id="success-message" style="display:none; color: green; margin-top: 30px;" >
+                                <strong>Thank you! Your message has been submitted.</strong>
+                            </div>
+                        
+                            <!-- Error Message -->
+                            <div id="error-message" style="display:none; color: red;">
+                                Oops! Something went wrong. Please try again.
+                            </div>
+                        </div>
+                                              
+                    </div>
+                    <div class="col-xl-5">
+                        <div class="title-area">
+                            <span class="sub-title">Contact Us</span>
+                            <h2 class="sec-title">Get In Touch</h2>
+                            <p>We are here to answer your questions and provide assistance. Reach out to us today!</p>
+                        </div>
+                        <div class="contact-info-wrap">
+                            <div class="contact-info">
+                                <div class="contact-info_icon">
+                                    <i class=""><img src="assets/img/icon/phone.svg" alt=""></i>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="contact-info_title">Phone Call</h4>
+                                    <span class="contact-info_text" style="font-size: 0.95em;">
+                                        <a href="#">0452 500 491</a>
+                                        <a href="#">0401 080 385</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="contact-info">
+                                <div class="contact-info_icon">
+                                    <i class=""><img src="assets/img/icon/message.svg" alt=""></i>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="contact-info_title">Email drop Us</h4>
+                                    <span class="contact-info_text" style="font-size: 0.95em;">
+                                        <a href="mailto:auto360solutions@outlook.com">auto360solutions@outlook.com</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="contact-info">
+                                <div class="contact-info_icon">
+                                    <i class=""><img src="assets/img/icon/location.svg" alt=""></i>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="contact-info_title">Location</h4>
+                                    <span class="contact-info_text" style="font-size: 0.95em;">49 Gallery Way, Pakenham</span>
+                                </div>
+                            </div>
+                            <div class="contact-wrapper">
+                                <h4 class="info-title">Follow Us</h4>
+                                <div class="th-social author-social">
+                                    <a href="https://www.facebook.com/profile.php?id=61562652069334"><i class="fab fa-facebook-f"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="map-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3140.2059052644304!2d145.47047967566272!3d-38.08887074981054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad61df16ec20b57%3A0xf753ead688fd03bf!2sAuto360%20Solutions!5e0!3m2!1sen!2sau!4v1731109295892!5m2!1sen!2sau" width="600" height="450" style="border:1;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+    
+    <!--==============================
+	Footer Area
+==============================-->
+<footer class="footer-wrapper footer-layout4 overflow-hidden">
+    <div class="widget-area">
+        <div class="container">
+            <div class="row justify-content-between">
+                
+                <!-- About Us Section -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget footer-widget">
+                        <h3 class="widget_title">About Our Service</h3>
+                        <div class="th-widget-about">
+                            <p class="footer-text">Your trusted destination for quality car service, maintenance, and repairs. We ensure your car runs smoothly and safely.</p>
+                            <h4 class="footer-info-title">OPERATING HOURS</h4>
+                            <p class="footer-text">Mon-Sun: 08.00 am to 8.00 pm</p>
+                            <a href="#contact-sec" class="th-btn style2">Book an Appointment</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Services Section -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget footer-widget">
+                        <h3 class="widget_title">Our Services</h3>
+                        <ul class="footer-links">
+                            <li><a href="#service-sec">Logbook Service</a></li>
+                            <li><a href="#service-sec">Engine or Transmission Swap</a></li>
+                            <li><a href="#service-sec">Brakes Replacement</a></li>
+                            <li><a href="#service-sec">RWC Certification</a></li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <!-- QR Code Section -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget footer-widget">
+                        <h3 class="widget_title">Scan for More Info</h3>
+                        <div class="qr-code">
+                            <img src="assets/img/qr-code.png" alt="QR Code" class="img-fluid" style="max-width: 150px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information Section -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget footer-widget">
+                        <h3 class="widget_title">Contact Us</h3>
+                        <p class="footer-text">Address: 49 Gallery Way, Pakenham</p>
+                        <p class="footer-text">Phone: <a href="#">0452 500 491 | 0401 080 385</a></p>
+                        <p class="footer-text">Email: <a href="mailto:auto360solutions@outlook.com">auto360solutions@outlook.com</a></p>
+                        <p class="footer-text">Follow Us:</p>
+                        <div class="footer-social-links">
+                            <a href="https://www.facebook.com/profile.php?id=61562652069334" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <!-- Shapes & Scroll to Top Button -->
+    <div class="shape-mockup movingX" data-top="0%" data-left="-7%"><img src="assets/img/update_1/shape/footer_shape_1.png" alt="shape"></div>
+    <div class="shape-mockup jump" data-top="0%" data-right="0%"><img src="assets/img/update_1/shape/footer_shape_2.png" alt="shape"></div>
+    
+    <!-- Scroll To Top -->
+    <div class="scroll-top">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+        </svg>
+    </div>
+</footer>
+
+
+    <!--******************************** 
+			Code End  Here 
+	******************************** -->
+
+
+    <!--==============================
+    All Js File
+============================== -->
+    <!-- Jquery -->
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <!-- Slick Slider -->
+    <script src="assets/js/slick.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Magnific Popup -->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up -->
+    <script src="assets/js/countdown.js"></script>
+    <!-- Range Slider -->
+    <script src="assets/js/jquery-ui.min.js"></script>
+    <!-- imagesloaded  -->
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <!-- circle-progress -->
+    <script src="assets/js/circle-progress.js"></script>
+    <!-- Isotope Filter -->
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <!-- odometer -->
+    <script src="assets/js/odometer.js"></script>
+    <!-- appear -->
+    <script src="assets/js/appear-2.js"></script>
+    <!-- tilt -->
+    <script src="assets/js/tilt.min.js"></script>
+    <!-- Nice Select -->
+    <script src="assets/js/nice-select.min.js"></script>
+    <!-- wow -->
+    <script src="assets/js/wow.min.js"></script>
+    <!-- Main Js File -->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Form submission handler
+        document.getElementById('contact-form').onsubmit = function(e) {
+            e.preventDefault(); // Prevent default form submission behavior
+    
+            var form = e.target; // Get the form
+            var formData = new FormData(form); // Get the form data
+            var successMessage = document.getElementById('success-message'); // Success message element
+            var errorMessage = document.getElementById('error-message'); // Error message element
+    
+            // Show success message and reset the form
+            successMessage.style.display = 'block'; // Show success message
+            errorMessage.style.display = 'none'; // Hide error message
+            form.reset(); // Reset form fields
+        }
+    </script>
+    
 </body>
+
 </html>
