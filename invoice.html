@@ -10,13 +10,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <!-- Login Popup -->
+    <div id="login-popup" class="popup">
+        <div class="popup-content">
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter username">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter password">
+            <button onclick="validateLogin()">Login</button>
+            <p id="login-error" style="color: red; display: none;">Invalid username or password!</p>
+        </div>
+    </div>
+
+    <!-- Invoice Form (initially hidden) -->
+    <div id="invoice-container" class="container" style="display: none;">
         <h1>Invoice Generator</h1>
         <form id="invoice-form">
-            <!-- New Input Fields -->
+            <!-- Invoice Details Section -->
             <div class="invoice-details">
                 <h3>Invoice Information</h3>
-                
                 <div class="input-row">
                     <div class="customer-row">
                         <label for="invoice-to">Invoice To:</label>
@@ -26,9 +39,8 @@
                         <label for="client-email">Email:</label>
                         <input type="email" id="client-email" placeholder="Enter client email" required>
                     </div>
-                    
                 </div>
-            
+
                 <div class="input-row">
                     <div class="customer-row">
                         <label for="rego-number">Rego #:</label>
@@ -39,7 +51,7 @@
                         <input type="text" id="invoice-number" placeholder="Enter invoice number" required>
                     </div>
                 </div>
-            
+
                 <div class="input-row">
                     <div class="customer-row">
                         <label for="invoice-date">Date:</label>
@@ -51,9 +63,8 @@
                     </div>
                 </div>
             </div>
-            
-            
 
+            <!-- Items Section -->
             <div id="items-container">
                 <h3>Items</h3>
                 <div class="item">
@@ -71,8 +82,8 @@
             </div>
             <button type="button" id="add-item">Add Item</button>
 
+            <!-- Payment Method and Bank Information Section -->
             <h3>Default Values</h3>
-
             <div class="panel">
                 <h3>Payment Method</h3>
                 <div class="customer-row">
@@ -113,5 +124,23 @@
     </div>
 
     <script src="script.js"></script>
+
+    <!-- Login Validation Script -->
+    <script>
+        function validateLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Static login credentials
+            if (username === 'auto360admin' && password === 'auto360admin') {
+                // Hide login popup and show the invoice form
+                document.getElementById('login-popup').style.display = 'none';
+                document.getElementById('invoice-container').style.display = 'block';
+            } else {
+                // Show error message if credentials are incorrect
+                document.getElementById('login-error').style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
