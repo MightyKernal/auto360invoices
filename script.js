@@ -28,7 +28,8 @@ document.getElementById('invoice-form').addEventListener('submit', function(even
         // Collect invoice information
         const invoiceTo = document.getElementById('invoice-to').value;
         const clientEmail = document.getElementById('client-email').value;
-        const regoNumber = document.getElementById('rego-number').value; // Collecting rego number
+        const regoNumber = document.getElementById('rego-number').value; 
+        const odometer = document.getElementById('odometer').value; 
         const invoiceNumber = document.getElementById('invoice-number').value;
         
         // Collect item information
@@ -91,71 +92,115 @@ document.getElementById('invoice-form').addEventListener('submit', function(even
 
         // Generate invoice HTML
         const invoiceHtml = `
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <img src="${logoUrl}" alt="Business Logo" style="max-width: 160px; height: 160px;">
-                <div style="text-align: right;">
-                    <h2 style="color: #ff7a01;">INVOICE</h2>
-                    <h2 style="color: #ff7a01;">Auto360 Solutions</h2>
-                    <p>0452500491</p>
-                    <p>0401080385</p>
-                    <p>auto360solutions@outlook.com</p>
-                    <p>www.auto360solutions.com.au</p>
-                    <p style="color: #ff7a01; font-weight: bold;">ABN No: 14580409238</p>
-                </div>
-            </div>
-            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-                <div>
-                    <p><strong>Invoice To:</strong> ${invoiceTo}</p>
-                    <p><strong>Rego Number:</strong> ${regoNumber}</p>
-                    <p><strong>Email:</strong> ${clientEmail}</p>
-                    <p><strong>Invoice #:</strong> ${invoiceNumber}</p>
-                </div>
-                
-                <div style="text-align: right;">
-                    <p><strong>Invoice Date:</strong> ${invoiceDate}</p>
-                    <p><strong>Due Date:</strong> ${dueDate}</p>
-                </div>
-            </div>
+                <div style="position: relative;">
 
-           
-            <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
-                <thead>
-                    <tr style="background-color: #f0f0f0;">
-                        <th style="padding: 10px; border: 1px solid #ccc;">Item Description</th>
-                        <th style="padding: 10px; border: 1px solid #ccc;">Part</th>
-                        <th style="padding: 10px; border: 1px solid #ccc;">Labour</th>
-                        <th style="padding: 10px; border: 1px solid #ccc;">Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${itemsHtml}
-                    <tr>
-                        <td colspan="3" style="text-align:right; padding: 10px;">Total Part Cost:</td>
-                        <td style="padding: 5px; text-align: right;"><strong>$${partCost.toFixed(2)}</strong></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" style="text-align:right; padding: 10px;">Total Labour Cost:</td>
-                        <td style="padding: 5px; text-align: right;"><strong>$${labourCost.toFixed(2)}</strong></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" style="text-align:right; padding: 10px;">GST(10%):</td>
-                        <td style="padding: 5px; text-align: right;"><strong>$${(totalAmount * 0.10).toFixed(2)}</strong></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" style="text-align:right; padding: 10px;"><strong>Total Amount:</strong></td>
-                        <td style="padding: 5px; text-align: right;"><strong>$${(totalAmount + (totalAmount * 0.10)).toFixed(2)}</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div style="margin-top: 50px;">
-                <p><strong>Bank Information</strong></p>
-                <p>Bank Name: ${bankName}</p>
-                <p>BSB: <span style="color: red;">${bsb}</span></p>
-                <p>Account No: <span style="color: red;">${accountNumber}</span></p>
-            </div>
-            ${paymentMethodHtml}
-            ${notesHtml}
-        `;
+                    <!-- Watermark background text at the top -->
+                    <div style="
+                        position: absolute;
+                        top: 40%;  
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 60px;
+                        color: rgba(200, 200, 200, 0.3); 
+                        white-space: nowrap;
+                        z-index: -1; 
+                        pointer-events: none;
+                        user-select: none;
+                    ">
+                        <b>Auto360 Solutions Pty Ltd</b>
+                    </div>
+
+                    <!-- Invoice content -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <img src="${logoUrl}" alt="Business Logo" style="max-width: 160px; height: 160px;">
+                        <div style="text-align: right;">
+                            <h2 style="color: #ff7a01;">INVOICE</h2>
+                            <h2 style="color: #ff7a01;">Auto360 Solutions</h2>
+                            <p>0452500491</p>
+                            <p>0401080385</p>
+                            <p>auto360solutions@outlook.com</p>
+                            <p>www.auto360solutions.com.au</p>
+                            <p style="color: #ff7a01; font-weight: bold;">ABN No: 14580409238</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                        <div>
+                            <p><strong>Invoice To:</strong> ${invoiceTo}</p>
+                            <p><strong>Rego Number:</strong> ${regoNumber}</p>
+                            <p><strong>Traveled Km:</strong> ${odometer}</p>
+                            <p><strong>Email:</strong> ${clientEmail}</p>
+                            <p><strong>Invoice #:</strong> ${invoiceNumber}</p>
+                        </div>
+                        
+                        <div style="text-align: right;">
+                            <p><strong>Invoice Date:</strong> ${invoiceDate}</p>
+                            <p><strong>Due Date:</strong> ${dueDate}</p>
+                        </div>
+                    </div>
+
+                    <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background-color: #f0f0f0;">
+                                <th style="padding: 10px; border: 1px solid #ccc;">Item Description</th>
+                                <th style="padding: 10px; border: 1px solid #ccc;">Part</th>
+                                <th style="padding: 10px; border: 1px solid #ccc;">Labour</th>
+                                <th style="padding: 10px; border: 1px solid #ccc;">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${itemsHtml}
+                            <tr>
+                                <td colspan="3" style="text-align:right; padding: 10px;">Total Part Cost:</td>
+                                <td style="padding: 5px; text-align: right;"><strong>$${partCost.toFixed(2)}</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align:right; padding: 10px;">Total Labour Cost:</td>
+                                <td style="padding: 5px; text-align: right;"><strong>$${labourCost.toFixed(2)}</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align:right; padding: 10px;">GST(10%):</td>
+                                <td style="padding: 5px; text-align: right;"><strong>$${(totalAmount * 0.10).toFixed(2)}</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align:right; padding: 10px;"><strong>Total Amount:</strong></td>
+                                <td style="padding: 5px; text-align: right;"><strong>$${(totalAmount + (totalAmount * 0.10)).toFixed(2)}</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Second Watermark after table -->
+                    <div style="
+                        position: absolute;
+                        top: 85%;  /* Adjust this to place it after the table */
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 60px;
+                        color: rgba(200, 200, 200, 0.3);
+                        white-space: nowrap;
+                        z-index: -1;
+                        pointer-events: none;
+                        user-select: none;
+                    ">
+                        <b>Auto360 Solutions Pty Ltd</b>
+                    </div>
+
+                    <div style="margin-top: 50px;">
+                        <p><strong>Bank Information</strong></p>
+                        <p>Bank Name: ${bankName}</p>
+                        <p>BSB: <span style="color: red;">${bsb}</span></p>
+                        <p>Account No: <span style="color: red;">${accountNumber}</span></p>
+                    </div>
+
+                    ${paymentMethodHtml}
+                    ${notesHtml}
+
+                </div>
+            `;
+
+
+
+
 
         // Display the invoice output
         const invoiceContent = document.getElementById('invoice-content');

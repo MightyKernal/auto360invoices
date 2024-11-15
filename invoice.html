@@ -54,6 +54,15 @@
 
                 <div class="input-row">
                     <div class="customer-row">
+                        <label for="odometer">Traveled Km:</label>
+                        <input type="text" id="odometer" placeholder="Enter vehicle Km" required>
+                    </div>
+                    <div class="customer-row">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="customer-row">
                         <label for="invoice-date">Date:</label>
                         <input type="date" id="invoice-date" required>
                     </div>
@@ -131,11 +140,12 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
+            
             // Static login credentials
             if (username === 'auto360admin' && password === 'auto360admin') {
-                // Hide login popup and show the invoice form
                 document.getElementById('login-popup').style.display = 'none';
                 document.getElementById('invoice-container').style.display = 'block';
+                // Hide login popup and show the invoice form
             } else {
                 // Show error message if credentials are incorrect
                 document.getElementById('login-error').style.display = 'block';
